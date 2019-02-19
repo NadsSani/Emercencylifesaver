@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "224591951145",
+    "firebase_url": "https://blood-donor-5e79a.firebaseio.com",
+    "project_id": "blood-donor-5e79a",
+    "storage_bucket": "blood-donor-5e79a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224591951145:android:18f7af584fcacf5a",
+        "android_client_info": {
+          "package_name": "com.example.bitsi34gb.emercencylifesaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "224591951145-8s7q2e1gq2lkai6lmgr3go9q8qp8uc8c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bitsi34gb.emercencylifesaver",
+            "certificate_hash": "c41a44403edcb5f8679c08aafd3e4f5d969ab96b"
+          }
+        },
+        {
+          "client_id": "224591951145-cl3pgo5frkjcel3n1npjqnq1hl0ngfm6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBW9UWJNXaQLbonsgvwD2pzIpiVwsWSvWU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "224591951145-cl3pgo5frkjcel3n1npjqnq1hl0ngfm6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
