@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.26" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
