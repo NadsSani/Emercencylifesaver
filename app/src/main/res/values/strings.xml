@@ -12,5 +12,14 @@
 
     <string name="action_settings">Settings</string>
 
-
+    <string name="username">Username is required</string>
+    <string name="dateofbirth">dateofbirth should be given</string>
+    <string name="location">location cannot be empty</string>
+    <string name="name">name cannot be empty</string>
+    <string name="password">password cannot be empty</string>
+    <string name="eligible">eligible cannot be empty</string>
+    <string name="lastdonated">last donated date</string>
+    <string name="gender">gender cannot be empty</string>
+    <string name="bloodgroup">bloodgroup cannot be empty</string>
+    <string name="phone">phone no is required</string>
 </resources>

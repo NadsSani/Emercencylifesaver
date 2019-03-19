@@ -1,6 +1,7 @@
 package com.example.bitsi34gb.emercencylifesaver;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -8,23 +9,34 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class ProfilePage extends Activity {
+public class ProfilePage extends Activity implements PopupMenu.OnMenuItemClickListener{
     static EditText date, time;
     EditText pname,area;
     EditText pnumber;
     Spinner bloodGroup;
-
+    ImageButton menubutton;
     Button register;
     private int _day;
     private int _month;
@@ -44,7 +56,7 @@ public class ProfilePage extends Activity {
         area = (EditText) findViewById(R.id.Spin_donorPage_Area);
         date = (EditText) findViewById(R.id.eT_donorPage_date);
         time = (EditText) findViewById(R.id.eT_donorPage_Time);
-
+       menubutton = (ImageButton)findViewById(R.id.menubutton);
         pname = (EditText) findViewById(R.id.eT_donorPage_patientName);
         pnumber = (EditText) findViewById(R.id.eT_donorPage_patientPhone);
         register = (Button) findViewById(R.id.bTn_donorPage_search);
@@ -104,8 +116,54 @@ public class ProfilePage extends Activity {
             }*/
 
         });
+menubutton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        PopupMenu popup = new PopupMenu(ProfilePage.this, v);
+
+        MenuInflater inflater = popup.getMenuInflater();
+        popup.setOnMenuItemClickListener(ProfilePage.this);
+        inflater.inflate(R.menu.menuf, popup.getMenu());
+        popup.show();
+
+
 
     }
+});
+    }
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.signout:
+                SharedPreferences preferences = getApplicationContext().getSharedPreferences("MyNads", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(ProfilePage.this, Blooddonar.class);
+                intent.putExtra("finish", true);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+                return true;
+            case R.id.lastdonateddate:
+                 Intent intent1 = new Intent(ProfilePage.this,LastDonated.class);
+                 startActivity(intent1);
+            case R.id.editdetails:
+
+
+
+            default:
+                return false;
+        }
+    }
+
+
+
 
     public static class DatePickerFragment extends DialogFragment implements
             DatePickerDialog.OnDateSetListener {

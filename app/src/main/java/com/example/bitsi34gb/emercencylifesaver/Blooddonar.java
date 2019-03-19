@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,11 +27,12 @@ String user , pass ;
 
     SharedPreferences sharedPref;
     ProgressDialog progressDialog;
-
+ private static final String TAG = "Nadeemse";
     SharedPreferences.Editor editor;
     static HashMap<String,String> hashMap = new HashMap<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blooddonar);
 
@@ -39,6 +41,7 @@ String user , pass ;
 
         sharedPref = getApplicationContext().getSharedPreferences("MyNads", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
+        Log.e(TAG , sharedPref.getString("userid","0"));
         userid = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.password);
         login = (Button)findViewById(R.id.login);
@@ -64,7 +67,7 @@ String user , pass ;
                                 hashMap.put(dataSnapshot1.getKey(),dataSnapshot1.getValue().toString());
                             }
                             if (hashMap.get("password").equals(pass)){
-                              //  saveinsharedpref();
+                               saveinsharedpref();
                                 Intent intent = new Intent(Blooddonar.this,ProfilePage.class);
                                 startActivity(intent);
                             }
@@ -100,10 +103,13 @@ String user , pass ;
     }
 
     public void saveinsharedpref(){
-       editor.putString("age",hashMap.get("age"));
+       editor.putString("dob",hashMap.get("dateofbirth"));
         editor.putString("bloodgroup",hashMap.get("bloodgroup"));
         editor.putString("lastdonateddate",hashMap.get("lastdonateddate"));
         editor.putString("location",hashMap.get("location"));
+        editor.putString("gender",hashMap.get("gender"));
+        editor.putString("location",hashMap.get("location"));
+        editor.putString("userid",hashMap.get("userid"));
         editor.putString("medicalreport",hashMap.get("medicalreport"));
         editor.putString("name",hashMap.get("name"));
         editor.putString("password",hashMap.get("password"));

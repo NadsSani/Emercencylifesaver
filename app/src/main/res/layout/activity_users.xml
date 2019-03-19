@@ -13,16 +13,16 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/emailid"
+            android:id="@+id/phoneno"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="email id or phone num"
+            android:hint="phoneno"
+            android:inputType="number"
             app:layout_constraintBottom_toTopOf="@+id/guideline14"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -37,8 +37,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
+            android:hint="name"
             android:inputType="textPersonName"
-            android:text="Name"
             app:layout_constraintBottom_toTopOf="@+id/guideline15"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -47,14 +47,14 @@
         <EditText
             android:id="@+id/dob"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="D.O.B"
+            android:hint="Dateofbirth"
+            android:inputType="date"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -68,10 +68,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline12"
+            app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
-            app:layout_constraintTop_toTopOf="@+id/guideline13" />
+            app:layout_constraintTop_toTopOf="@+id/guideline22" />
 
         <Spinner
             android:id="@+id/gender"
@@ -81,10 +81,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline11"
+            app:layout_constraintBottom_toTopOf="@+id/guideline22"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
-            app:layout_constraintTop_toTopOf="@+id/guideline12" />
+            app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
         <EditText
             android:id="@+id/location"
@@ -95,12 +95,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
+            android:hint="location"
             android:inputType="textPersonName"
-            android:text="location"
-            app:layout_constraintBottom_toTopOf="@+id/guideline10"
+            app:layout_constraintBottom_toTopOf="@+id/guideline12"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
-            app:layout_constraintTop_toTopOf="@+id/guideline11" />
+            app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
         <EditText
             android:id="@+id/userid"
@@ -111,8 +111,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
+            android:hint="userid"
             android:inputType="textPersonName"
-            android:text="userid"
             app:layout_constraintBottom_toTopOf="@+id/guideline17"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -121,14 +121,14 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:ems="10"
+            android:hint="password"
             android:inputType="textPersonName"
-            android:text="password"
             app:layout_constraintBottom_toTopOf="@+id/guideline16"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -146,63 +146,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="81dp" />
+            app:layout_constraintGuide_percent="0.08273749" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="757dp" />
+            app:layout_constraintGuide_percent="0.72" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="673dp" />
+            app:layout_constraintGuide_percent="0.65" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="594dp" />
+            app:layout_constraintGuide_percent="0.81" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="511dp" />
+            app:layout_constraintGuide_percent="0.53314525" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="424dp" />
+            app:layout_constraintGuide_percent="0.433095" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="333dp" />
+            app:layout_constraintGuide_percent="0.340143" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="251dp" />
+            app:layout_constraintGuide_percent="0.2553626" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="165dp" />
+            app:layout_constraintGuide_percent="0.16853933" />
 
         <EditText
             android:id="@+id/lastdonated"
@@ -214,11 +214,11 @@
             android:layout_marginBottom="8dp"
             android:ems="10"
             android:hint="lastdonated"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/guideline18"
+            android:inputType="date"
+            app:layout_constraintBottom_toTopOf="@+id/guideline10"
             app:layout_constraintEnd_toStartOf="@+id/guideline21"
             app:layout_constraintStart_toStartOf="@+id/guideline20"
-            app:layout_constraintTop_toTopOf="@+id/guideline10" />
+            app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
         <Button
             android:id="@+id/submit"
@@ -238,14 +238,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="846dp" />
+            app:layout_constraintGuide_percent="0.89" />
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_end="77dp" />
+            app:layout_constraintGuide_percent="0.98" />
 
         <TextView
             android:id="@+id/signup"
@@ -276,6 +276,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9158416" />
+
+        <EditText
+            android:id="@+id/eligible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="medical conditions"
+            app:layout_constraintBottom_toTopOf="@+id/guideline18"
+            app:layout_constraintEnd_toStartOf="@+id/guideline21"
+            app:layout_constraintStart_toStartOf="@+id/guideline20"
+            app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.59" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

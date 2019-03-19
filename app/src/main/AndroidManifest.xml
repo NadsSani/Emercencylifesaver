@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/emeric"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".ProfilePage">
-
-        </activity>
+        <activity android:name=".LastDonated"></activity>
+        <activity android:name=".ProfilePage"></activity>
         <activity
             android:name=".UsersActivity"
             android:screenOrientation="portrait" />
