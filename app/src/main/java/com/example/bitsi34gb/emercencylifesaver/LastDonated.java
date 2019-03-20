@@ -38,14 +38,13 @@ public class LastDonated extends AppCompatActivity {
                 if (lastdate.getText().toString().isEmpty()){
 
                     Toast.makeText(getApplicationContext(),"date should not be empty",Toast.LENGTH_LONG).show();
-                    return;
                 }
                 else{
-                  userid = sharedPref.getString("userid","0");
-                  Log.e(TAG,userid.toString());
-                  myRef.child("lastdonateddate").setValue(lastdate);
+
+
+                  myRef.child("lastdonateddate").setValue(lastdate.getText().toString());
                     moveTaskToBack(true);
-                    Intent intent = new Intent(LastDonated.this, Blooddonar.class);
+                    Intent intent = new Intent(LastDonated.this, ProfilePage.class);
                     intent.putExtra("finish", true);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                             Intent.FLAG_ACTIVITY_CLEAR_TASK |

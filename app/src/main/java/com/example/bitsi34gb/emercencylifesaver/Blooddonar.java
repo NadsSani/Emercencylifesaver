@@ -36,8 +36,7 @@ String user , pass ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blooddonar);
 
-       FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference myRef = database.getReference("donors");
+
 
         sharedPref = getApplicationContext().getSharedPreferences("MyNads", Context.MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -49,46 +48,19 @@ String user , pass ;
             @Override
             public void onClick(View v) {
 
-
+                progressDialog = new ProgressDialog(Blooddonar.this);
+                progressDialog.setMessage("please Wait while loading");
+                progressDialog.show();
                 user = userid.getText().toString();
                 pass = password.getText().toString();
+                if(!user.isEmpty()&& !pass.isEmpty()){
+                signin(user,pass);
+                }else{
+
+                    Toast.makeText(getApplicationContext(),"Userid and Password cannot be empty",Toast.LENGTH_LONG).show();
+                }
 
 
-
-                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        if (dataSnapshot.hasChild(user)){
-                              hashMap.put("userid",user);
-
-                            for(DataSnapshot dataSnapshot1:dataSnapshot.child(user).getChildren()){
-
-                                hashMap.put(dataSnapshot1.getKey(),dataSnapshot1.getValue().toString());
-                            }
-                            if (hashMap.get("password").equals(pass)){
-                               saveinsharedpref();
-                                Intent intent = new Intent(Blooddonar.this,ProfilePage.class);
-                                startActivity(intent);
-                            }
-                            else{
-                                 Toast.makeText(getApplicationContext(),"Cant login without correct password ",Toast.LENGTH_LONG).show();
-                            }
-
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(),"Cant login without correct userid and password ",Toast.LENGTH_LONG).show();
-
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
             }
         });
         signup = (Button)findViewById(R.id.signup);
@@ -102,13 +74,32 @@ String user , pass ;
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        sharedPref = getApplicationContext().getSharedPreferences("MyNads",Context.MODE_PRIVATE);
+        String email1 =  sharedPref.getString("userid","d");
+        String password = sharedPref.getString("password","d");
+        if(email1.equals("d")|| password.equals("d")){
+            return;
+
+        }
+        else{
+            progressDialog = new ProgressDialog(Blooddonar.this);
+            progressDialog.setMessage("please Wait while loading");
+            progressDialog.show();
+            signin(email1,password);
+
+        }
+    }
+
     public void saveinsharedpref(){
        editor.putString("dob",hashMap.get("dateofbirth"));
         editor.putString("bloodgroup",hashMap.get("bloodgroup"));
         editor.putString("lastdonateddate",hashMap.get("lastdonateddate"));
         editor.putString("location",hashMap.get("location"));
         editor.putString("gender",hashMap.get("gender"));
-        editor.putString("location",hashMap.get("location"));
         editor.putString("userid",hashMap.get("userid"));
         editor.putString("medicalreport",hashMap.get("medicalreport"));
         editor.putString("name",hashMap.get("name"));
@@ -117,7 +108,48 @@ String user , pass ;
         editor.apply();
 
     }
+public void signin(final String usern, final String password){
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference("donors");
+    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+
+            if (dataSnapshot.hasChild(usern)){
+                hashMap.put("userid",usern);
+
+                for(DataSnapshot dataSnapshot1:dataSnapshot.child(usern).getChildren()){
+
+                    hashMap.put(dataSnapshot1.getKey(),dataSnapshot1.getValue().toString());
+                }
+                if (hashMap.get("password").equals(password)){
+                    saveinsharedpref();
+                    progressDialog.cancel();
+                    Intent intent = new Intent(Blooddonar.this,ProfilePage.class);
+                    startActivity(intent);
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Cant login without correct password ",Toast.LENGTH_LONG).show();
+                }
+
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Cant login without correct userid and password ",Toast.LENGTH_LONG).show();
+
+            }
+
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    });
+
+}
 
 
 }

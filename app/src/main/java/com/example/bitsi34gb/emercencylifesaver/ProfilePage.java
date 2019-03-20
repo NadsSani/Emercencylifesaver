@@ -5,14 +5,16 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.PopupMenu;
@@ -131,8 +133,109 @@ menubutton.setOnClickListener(new View.OnClickListener() {
 
     }
 });
+
+
+
+     register.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+        if (!date.getText().toString().equals("")) {
+            if (!time.getText().toString().equals("")) {
+                if (!pname.getText().toString().equals("")) {
+                    // Toast.makeText(getActivity(),"Not Empty",Toast.LENGTH_SHORT).show();
+                    if (!pnumber.getText().toString().equals("")) {
+
+                        //send SMS
+                        String msg = "BLOOD BANK"
+                                +"\n"+"Patient name: "+pname.getText().toString()
+                                +"\n"+"Blood group: "+bloodGroup.getSelectedItem().toString()
+                                +"\n"+"Required date: "+date.getText().toString()
+                                +"\n"+"Required time: "+time.getText().toString()
+                                +"\n"+"Area: "+area.getText().toString()
+                                +"\n"+"Phone No: "+pnumber.getText().toString();
+                        String phNo="+919207663879";
+                        //sendSMS(phNo, msg);
+
+
+                    Toast.makeText(ProfilePage.this, "Search", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ProfilePage.this,ListOfDonors.class);
+                    intent.putExtra("bloodgroup",bloodGroup.getSelectedItem().toString());
+                    intent.putExtra("area",area.getText().toString());
+                    startActivity(intent);
+
+
+
+                    } else {
+
+                        pnumber.setError("Enter Patient Number");
+                    }
+
+                } else {
+                    pname.setError("Enter Patient Name");
+                    //   Toast.makeText(getActivity(),"Empty",Toast.LENGTH_SHORT).show();
+                }
+            }
+            else
+            {
+                time.setError("Enter Required Time");
+            }
+        }
+
+        else {
+            date.setError("Enter Required Date");
+        }
+
+
+
+     }
+    });
+
+
+
     }
 
+
+
+
+
+
+    @Override
+    public void onBackPressed() {
+
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setTitle("Exit Application?");
+        alertDialogBuilder
+                .setMessage("Click yes to exit!")
+                .setCancelable(false)
+                .setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                moveTaskToBack(true);
+
+                              /*  Intent intent = new Intent(Users.this, MainActivity.class);
+                                intent.putExtra("finish", true);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                                        Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);*/
+                                finish();
+                                android.os.Process.killProcess(android.os.Process.myPid());
+                                System.exit(1);
+                            }
+                        })
+
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
@@ -154,9 +257,8 @@ menubutton.setOnClickListener(new View.OnClickListener() {
                  Intent intent1 = new Intent(ProfilePage.this,LastDonated.class);
                  startActivity(intent1);
             case R.id.editdetails:
-
-
-
+                   Intent intent2 = new Intent(ProfilePage.this,EditDetails.class);
+                   startActivity(intent2);
             default:
                 return false;
         }
