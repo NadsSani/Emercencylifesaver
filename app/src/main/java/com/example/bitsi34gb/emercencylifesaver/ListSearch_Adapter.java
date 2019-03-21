@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ListSearch_Adapter extends RecyclerView.Adapter<ListSearch_Adapter.ProductViewHolder> {
 
@@ -45,7 +45,7 @@ public class ListSearch_Adapter extends RecyclerView.Adapter<ListSearch_Adapter.
         holder.tvName.setText("Name: " + donor.getName());
         holder.tvPhoneNo.setText("Phone: " + donor.getPhoneNo());
         holder.tvPlace.setText("Place: " + donor.getPlace());
-
+        holder.medicalreport.setText("Medical details: "+ donor.getMedical());
         holder.iv_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class ListSearch_Adapter extends RecyclerView.Adapter<ListSearch_Adapter.
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvName, tvPhoneNo, tvPlace;
+        TextView tvName, tvPhoneNo, tvPlace , medicalreport;
         public ImageView iv_call;
 
         public ProductViewHolder(View itemView) {
@@ -76,6 +76,7 @@ public class ListSearch_Adapter extends RecyclerView.Adapter<ListSearch_Adapter.
             tvPhoneNo = itemView.findViewById(R.id.tvPhoneNo);
             tvPlace = itemView.findViewById(R.id.tvPlace);
             iv_call = itemView.findViewById(R.id.iv_call);
+            medicalreport = itemView.findViewById(R.id.medicaldetails);
 
 
         }

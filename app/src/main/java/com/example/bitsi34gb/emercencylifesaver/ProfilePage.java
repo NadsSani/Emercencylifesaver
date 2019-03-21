@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.telephony.SmsManager;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +33,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ProfilePage extends Activity implements PopupMenu.OnMenuItemClickListener{
@@ -154,8 +157,8 @@ menubutton.setOnClickListener(new View.OnClickListener() {
                                 +"\n"+"Required time: "+time.getText().toString()
                                 +"\n"+"Area: "+area.getText().toString()
                                 +"\n"+"Phone No: "+pnumber.getText().toString();
-                        String phNo="+919207663879";
-                        //sendSMS(phNo, msg);
+                        String phNo="+918870892269";
+                        sendSMS(phNo, msg);
 
 
                     Toast.makeText(ProfilePage.this, "Search", Toast.LENGTH_SHORT).show();
@@ -198,7 +201,19 @@ menubutton.setOnClickListener(new View.OnClickListener() {
 
 
 
-
+    public void sendSMS(String phoneNo, String msg) {
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            ArrayList<String> messageParts = smsManager.divideMessage(msg);
+            smsManager.sendMultipartTextMessage(phoneNo, null, messageParts, null, null);
+            Toast.makeText(ProfilePage.this, "Message Sent",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception ex) {
+            Toast.makeText(ProfilePage.this,ex.getMessage().toString(),
+                    Toast.LENGTH_LONG).show();
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -256,9 +271,12 @@ menubutton.setOnClickListener(new View.OnClickListener() {
             case R.id.lastdonateddate:
                  Intent intent1 = new Intent(ProfilePage.this,LastDonated.class);
                  startActivity(intent1);
-            case R.id.editdetails:
-                   Intent intent2 = new Intent(ProfilePage.this,EditDetails.class);
-                   startActivity(intent2);
+                 return true;
+            case R.id.helpline:
+                Intent intent12 = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "+918870892269", null));
+                startActivity(intent12);
+                 return  true;
+
             default:
                 return false;
         }

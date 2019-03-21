@@ -67,7 +67,7 @@ String bloodgroup,place;
                                }else{numOfDays=91;}
 
 
-                               if (numOfDays>90){donorList.add(new ListSearch_Item(dataSnapshot1.child("name").getValue().toString(),dataSnapshot1.child("phone").getValue().toString(),dataSnapshot1.child("location").getValue().toString()));}
+                               if (numOfDays>90){donorList.add(new ListSearch_Item(dataSnapshot1.child("name").getValue().toString(),dataSnapshot1.child("phone").getValue().toString(),dataSnapshot1.child("location").getValue().toString(),dataSnapshot1.child("medicalreport").getValue().toString()));}
                                //donorList.add(new ListSearch_Item(dataSnapshot1.child("name").getValue().toString(),dataSnapshot1.child("phone").getValue().toString(),dataSnapshot1.child("location").getValue().toString()));
                         }
                     adapter = new ListSearch_Adapter(ListOfDonors.this, donorList);

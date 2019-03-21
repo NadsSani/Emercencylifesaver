@@ -8,14 +8,17 @@
         android:title="Signout"
         app:showAsAction="never"/>
     <item
-        android:id="@+id/editdetails"
-        android:orderInCategory="100"
-        android:title="Edit details"
-        app:showAsAction="never"/>
-    <item
         android:id="@+id/lastdonateddate"
         android:orderInCategory="100"
         android:title="lastdonated date"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/helpline"
+        android:orderInCategory="100"
+        android:title="Admin"
+        app:showAsAction="never"/>
+
+
 
 </menu>

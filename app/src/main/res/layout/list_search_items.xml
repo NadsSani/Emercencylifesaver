@@ -48,6 +48,13 @@
                     android:text="Ph No."
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:textColor="#dcdcdc" />
+                <TextView
+                    android:id="@+id/medicaldetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medical conditions"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#dcdcdc" />
 
             </LinearLayout>
 
